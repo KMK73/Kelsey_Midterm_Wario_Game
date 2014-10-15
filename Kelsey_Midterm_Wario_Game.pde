@@ -11,7 +11,7 @@ float speedX;
 
 //timer
 int timerStart;
-int timerGameOver;
+int timerGameOver = 0;
 
 Box box1;
 Box box2;
@@ -51,14 +51,17 @@ void draw () {
   box3.display();
   
   
-  if(contact(box1) == true) {
+  if(contact(box1) == true&&timerGameOver==0) {
     println("I hit box 1");
-    fill(0);
-    rect(width/2, height/2, width, height);
-    textSize(50);
-    text("GAME OVER", width/2, height/2); 
-    fill(0, 102, 153);
+//    fill(0);
+//    rect(width/2, height/2, width, height);
+//    textSize(50);
+    timerGameOver = millis();
+    println("You lasted until "
+      + ((timerGameOver - timerStart) / 1000.0)
+      + " seconds. Congratulations!" );
   }
+ 
   if(contact(box2) == true) {
     println("I hit box 2");
   }
