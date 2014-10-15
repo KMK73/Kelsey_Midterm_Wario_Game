@@ -15,11 +15,12 @@ int timerGameOver = 0;
 String timeString = "000";
 
 //creating array list of boxes
-ArrayList<Box> boxes;
-boolean hitBottom;
+//ArrayList<Box> boxes;
+//boolean hitBottom;
 Box box1;
 Box box2;
 Box box3;
+Box box4;
 
 void setup () {
   size (500, 500, P3D);
@@ -28,6 +29,7 @@ void setup () {
   box1 = new Box();
   box2 = new Box();
   box3 = new Box();
+  box4 = new Box();
 
   //  //array boxes
   //  boxes = new ArrayList<Box> ();
@@ -81,7 +83,7 @@ void draw () {
   box1.display();
   box2.display();
   box3.display();
-
+  box4.display();
 
   if (contact(box1) == true&&timerGameOver==0) {
     println("I hit box 1");
@@ -116,6 +118,19 @@ void draw () {
     timerGameOver = millis();
     background(0);
     textSize(40);
+    text("Game Over", width/2, height/2);
+    textSize(30);
+    fill(255, 0, 0);
+    text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
+    noLoop();
+  }
+    if (contact(box4) == true&&timerGameOver==0) {
+    println("I hit box 2");
+    //timer and text
+    timerGameOver = millis();
+    background(0);
+    textSize(40);
+    fill(255, 255, 255);
     text("Game Over", width/2, height/2);
     textSize(30);
     fill(255, 0, 0);

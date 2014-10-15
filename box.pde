@@ -9,7 +9,7 @@ class Box {
 
   Box () {
     boxHeight = random (10, 30);
-    boxWidth = random (40, 400);
+    boxWidth = random (40, 300);
     boxX= random (0, width);
     boxY= random (-boxHeight, boxHeight);
     speedY= random(1, 2.5);
