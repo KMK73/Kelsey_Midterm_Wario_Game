@@ -14,6 +14,9 @@ int timerStart;
 int timerGameOver = 0;
 String timeString = "000";
 
+//creating array list of boxes
+ArrayList<Box> boxes;
+boolean hitBottom;
 Box box1;
 Box box2;
 Box box3;
@@ -25,6 +28,17 @@ void setup () {
   box1 = new Box();
   box2 = new Box();
   box3 = new Box();
+
+  //  //array boxes
+  //  boxes = new ArrayList<Box> ();
+  //  //  boxes.add(new Box());
+  //
+  //  for (int i = 0; i < 3; i++) {
+  //    box = new Box();
+  //    boxes.add(box);
+  //  }
+
+
   //starting timer
   timerStart = millis();
 }
@@ -46,6 +60,23 @@ void draw () {
     warioX=1;
     speedX *= -1;
   }
+
+  ////if boxes go past the bottom of the screen
+  //    boolean hitBottom (Box b) {
+  //      if (b.boxY > height) {
+  //        return true;
+  //      } else {
+  //        return false;
+  //      }
+  //    }
+  //    for (int i = 0; i < boxes.size (); i++) {
+  //      if (hitBottom(boxes.get(i))) {
+  //        boxes.remove(i);
+  //        box = new Box();
+  //        boxes.add(box);
+  //      }
+  //    }
+  //  }
 
   box1.display();
   box2.display();
@@ -85,7 +116,6 @@ void draw () {
     timerGameOver = millis();
     background(0);
     textSize(40);
-    fill(255, 255, 255);
     text("Game Over", width/2, height/2);
     textSize(30);
     fill(255, 0, 0);
@@ -102,19 +132,19 @@ boolean contact(Box b) {
   float otherY2 = b.boxY + b.boxHeight;  
 
   //checking if the boxes hit each other by returning false when they are not touching 
-  if ( warioX < b.boxWidth && myX2 <b.boxX) { //totally to the left not touching
+  if ( warioX < b.boxX && myX2 < b.boxX) { //totally to the left not touching
     return false;
   }
 
-  if ( myX2 > otherX2 && warioX > otherX2) { //totally right not touching 
+  if ( warioX > otherX2 && myX2 > otherX2) { //totally right not touching 
     return false;
   }
 
-  if ( myY2 < b.boxY && warioY < b.boxY) { //totally above not touching 
+  if ( warioY < b.boxY && myY2 < b.boxY) { //totally above not touching 
     return false;
   }
 
-  if ( myY2 > otherY2 && warioY > otherY2) { //totally below not touching 
+  if ( warioY > otherY2 && myY2 > otherY2) { //totally below not touching 
     return false;
   }
 
