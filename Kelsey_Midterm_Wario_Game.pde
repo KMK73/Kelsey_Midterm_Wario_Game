@@ -30,7 +30,7 @@ void setup () {
 }
 
 void draw () {
-  background (255);
+  background (0);
   
   //wario information
   image(wario, warioX, warioY);
@@ -59,22 +59,38 @@ void draw () {
     background(0);
     textSize(40);
     fill(255, 255, 255);
-    text("Game Over" + ((timerGameOver - timerStart) / 1000.0), 100, 200);
-
-//    timeString = ((timerGameOver - timerStart) / 1000.0);
-//    text(timeString + " sec", width/2, height/2);
-//    text("Game Over", width/2, height/2 +40);
-//    text("You lasted until "
-//      + ((timerGameOver - timerStart) / 1000.0)
-//      + " seconds. Congratulations!" );
+    text("Game Over", width/2, height/2);
+    textSize(30);
+    fill(255,0,0);
+    text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
     noLoop();
   }
  
   if(contact(box2) == true&&timerGameOver==0) {
     println("I hit box 2");
+        //timer and text
+    timerGameOver = millis();
+    background(0);
+    textSize(40);
+    fill(255, 255, 255);
+    text("Game Over", width/2, height/2);
+    textSize(30);
+    fill(255,0,0);
+    text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
+    noLoop();
   }
   if(contact(box3) == true&&timerGameOver==0) {
     println("I hit box 3");
+    //timer and text
+    timerGameOver = millis();
+    background(0);
+    textSize(40);
+    fill(255, 255, 255);
+    text("Game Over", width/2, height/2);
+    textSize(30);
+    fill(255,0,0);
+    text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
+    noLoop();
   }
 }
 
