@@ -12,6 +12,7 @@ float speedX;
 //timer
 int timerStart;
 int timerGameOver = 0;
+String timeString = "000";
 
 Box box1;
 Box box2;
@@ -53,19 +54,26 @@ void draw () {
   
   if(contact(box1) == true&&timerGameOver==0) {
     println("I hit box 1");
-//    fill(0);
-//    rect(width/2, height/2, width, height);
-//    textSize(50);
+    //timer and text
     timerGameOver = millis();
-    println("You lasted until "
-      + ((timerGameOver - timerStart) / 1000.0)
-      + " seconds. Congratulations!" );
+    background(0);
+    textSize(40);
+    fill(255, 255, 255);
+    text("Game Over" + ((timerGameOver - timerStart) / 1000.0), 100, 200);
+
+//    timeString = ((timerGameOver - timerStart) / 1000.0);
+//    text(timeString + " sec", width/2, height/2);
+//    text("Game Over", width/2, height/2 +40);
+//    text("You lasted until "
+//      + ((timerGameOver - timerStart) / 1000.0)
+//      + " seconds. Congratulations!" );
+    noLoop();
   }
  
-  if(contact(box2) == true) {
+  if(contact(box2) == true&&timerGameOver==0) {
     println("I hit box 2");
   }
-  if(contact(box3) == true) {
+  if(contact(box3) == true&&timerGameOver==0) {
     println("I hit box 3");
   }
 }
