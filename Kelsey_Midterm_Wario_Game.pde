@@ -31,7 +31,7 @@ void setup () {
 
 void draw () {
   background (0);
-  
+
   //wario information
   image(wario, warioX, warioY);
   warioX = warioX + speedX;
@@ -50,9 +50,9 @@ void draw () {
   box1.display();
   box2.display();
   box3.display();
-  
-  
-  if(contact(box1) == true&&timerGameOver==0) {
+
+
+  if (contact(box1) == true&&timerGameOver==0) {
     println("I hit box 1");
     //timer and text
     timerGameOver = millis();
@@ -61,25 +61,25 @@ void draw () {
     fill(255, 255, 255);
     text("Game Over", width/2, height/2);
     textSize(30);
-    fill(255,0,0);
+    fill(255, 0, 0);
     text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
     noLoop();
   }
- 
-  if(contact(box2) == true&&timerGameOver==0) {
+
+  if (contact(box2) == true&&timerGameOver==0) {
     println("I hit box 2");
-        //timer and text
+    //timer and text
     timerGameOver = millis();
     background(0);
     textSize(40);
     fill(255, 255, 255);
     text("Game Over", width/2, height/2);
     textSize(30);
-    fill(255,0,0);
+    fill(255, 0, 0);
     text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
     noLoop();
   }
-  if(contact(box3) == true&&timerGameOver==0) {
+  if (contact(box3) == true&&timerGameOver==0) {
     println("I hit box 3");
     //timer and text
     timerGameOver = millis();
@@ -88,7 +88,7 @@ void draw () {
     fill(255, 255, 255);
     text("Game Over", width/2, height/2);
     textSize(30);
-    fill(255,0,0);
+    fill(255, 0, 0);
     text(((timerGameOver - timerStart) / 1000.0), width/2, height/2+50);
     noLoop();
   }
@@ -100,26 +100,25 @@ boolean contact(Box b) {
   float myY2 = warioY + wario.height;
   float otherX2 = b.boxX + b.boxWidth;
   float otherY2 = b.boxY + b.boxHeight;  
-  
+
   //checking if the boxes hit each other by returning false when they are not touching 
-  if( warioX < b.boxWidth && myX2 <b.boxX) { //totally to the left not touching
+  if ( warioX < b.boxWidth && myX2 <b.boxX) { //totally to the left not touching
     return false;
   }
-  
+
   if ( myX2 > otherX2 && warioX > otherX2) { //totally right not touching 
     return false;
   }
-  
+
   if ( myY2 < b.boxY && warioY < b.boxY) { //totally above not touching 
     return false;
   }
-  
+
   if ( myY2 > otherY2 && warioY > otherY2) { //totally below not touching 
     return false;
   }
-  
-  return true; //because if all are false then they are colliding BOOM 
-  
+
+  return true; //because if all are false then they are colliding BOOM
 }
 
 void keyPressed() {
