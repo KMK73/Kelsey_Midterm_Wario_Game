@@ -9,6 +9,10 @@ PImage wario;
 float speed;
 float speedX;
 
+//timer
+int timerStart;
+int timerGameOver;
+
 Box box1;
 Box box2;
 Box box3;
@@ -20,10 +24,14 @@ void setup () {
   box1 = new Box();
   box2 = new Box();
   box3 = new Box();
+  //starting timer
+  timerStart = millis();
 }
 
 void draw () {
   background (255);
+  
+  //wario information
   image(wario, warioX, warioY);
   warioX = warioX + speedX;
 
@@ -41,8 +49,15 @@ void draw () {
   box1.display();
   box2.display();
   box3.display();
+  
+  
   if(contact(box1) == true) {
     println("I hit box 1");
+    fill(0);
+    rect(width/2, height/2, width, height);
+    textSize(50);
+    text("GAME OVER", width/2, height/2); 
+    fill(0, 102, 153);
   }
   if(contact(box2) == true) {
     println("I hit box 2");
