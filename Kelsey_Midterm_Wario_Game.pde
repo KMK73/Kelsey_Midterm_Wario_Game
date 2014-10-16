@@ -6,7 +6,6 @@ float warioY=450;
 PImage wario;
 
 //speed
-float speed;
 float speedX;
 
 //timer
@@ -14,9 +13,6 @@ int timerStart;
 int timerGameOver = 0;
 String timeString = "000";
 
-//creating array list of boxes
-//ArrayList<Box> boxes;
-//boolean hitBottom;
 Box box1;
 Box box2;
 Box box3;
@@ -25,7 +21,6 @@ Box box4;
 void setup () {
   size (500, 500, P3D);
   wario = loadImage("wario.jpg"); 
-  speed=0;
   box1 = new Box();
   box2 = new Box();
   box3 = new Box();
